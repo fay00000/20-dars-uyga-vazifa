@@ -1,0 +1,388 @@
+/* General Body & Typography */
+:root {
+    --primary-color: #6a8e7a;
+    /* Muted Green */
+    --secondary-color: #f0ead6;
+    /* Light Cream (now main background image placeholder) */
+    --accent-color: #c94c4c;
+    /* Earthy Red/Orange for buttons/highlights */
+    --text-dark: #333;
+    --text-light: #fdfdfd;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* --- Ключевые изменения здесь для body и html --- */
+html,
+body {
+    height: 100%;
+    /* Занимаем всю высоту окна */
+    overflow: hidden;
+    /* Запрещаем прокрутку на уровне html/body */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    /* Основной цвет текста на сайте */
+    /* background-color: var(--secondary-color);  УДАЛЯЕМ этот цвет, он будет заменен картинкой */
+
+    background-image: url('img/mountain-peak-above-3840x2160-12251.jpg');
+    /* <-- ПУТЬ К ВАШЕЙ НОВОЙ ФОНОВОЙ КАРТИНКЕ */
+    background-size: cover;
+    /* Растянуть изображение, чтобы оно покрывало всю область */
+    background-position: center;
+    /* Центрировать изображение */
+    background-repeat: no-repeat;
+    /* Запретить повторение изображения */
+    background-attachment: fixed;
+    /* Фиксирует фон при прокрутке (хотя у нас ее нет) */
+
+    position: relative;
+    /* Важно для размещения псевдоэлемента затемнения */
+    display: flex;
+    /* Делаем body флекс-контейнером */
+    flex-direction: column;
+    /* Элементы внутри body располагаются вертикально */
+}
+
+/* --- Псевдоэлемент для затемнения фоновой картинки body --- */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Полупрозрачный черный слой (30% затемнения) */
+    z-index: -1;
+    /* Помещаем под все содержимое body */
+}
+
+/* ----------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Остальные стили .container и прочих элементов остаются такими же,
+   как в предыдущем ответе, я их не буду дублировать полностью,
+   чтобы не засорять код. Просто добавьте или замените вышеуказанные
+   блоки в вашем существующем style.css. */
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Header */
+.main-header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-light);
+    padding: 20px 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-family: var(--font-heading);
+}
+
+.logo a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--text-light);
+    font-weight: 400;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    text-align: center;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+#heroVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+
+.hero-content {
+    background-image: url('img/image.png');
+    /* <-- Путь к вашей картинке */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 60px;
+    border-radius: 10px;
+    max-width: 800px;
+    min-height: 250px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(42, 41, 41);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.btn:hover {
+    background-color: #a83a3a;
+}
+
+/* --- Стили для "зеленой платформы" --- */
+.green-platform {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 20px 0;
+    text-align: center;
+    flex-shrink: 0;
+    /* margin-top: auto; - это может пригодиться, если вы хотите "прижать" ее к низу hero-section */
+    /* В нашем Flexbox-макете она сама будет внизу, если hero-section flex-grow: 1 */
+}
+
+.green-platform h2 {
+    color: var(--text-light);
+    font-size: 2em;
+    margin-bottom: 25px;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.journey-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 10px;
+}
+
+.journey-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.journey-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.journey-card h3 {
+    font-size: 1.2em;
+    padding: 10px 15px 5px;
+    color: var(--primary-color);
+}
+
+.journey-card .read-more {
+    display: block;
+    text-align: right;
+    padding: 5px 15px 10px;
+    color: var(--accent-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.journey-card .read-more:hover {
+    color: var(--text-dark);
+}
+
+/* ------------------------------------------- */
+
+/* Footer */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 20px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links a {
+    color: var(--text-light);
+    margin: 0 10px;
+    transition: color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hero-content {
+        padding: 30px;
+    }
+
+    .journey-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .green-platform {
+        padding: 15px 0;
+    }
+
+    .journey-card img {
+        height: 120px;
+    }
+}
